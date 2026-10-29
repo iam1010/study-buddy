@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f2eb" />
+    <title>Studybuddy — Flashcards</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Studybuddy home">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span>studybuddy</span>
+        </a>
+        <span class="local-badge"><span></span> Your study space</span>
+      </header>
+
+      <section class="workspace" aria-labelledby="page-title">
+        <div class="intro">
+          <p class="eyebrow">YOUR LEARNING TOOLKIT <span>01 / 01</span></p>
+          <h1 id="page-title">Make it <em>stick.</em></h1>
+          <p class="lede">Small, focused practice for the things you want to remember.</p>
+        </div>
+
+        <div class="tool-heading">
+          <div class="tool-icon" aria-hidden="true">▤</div>
+          <div>
+            <h2>Flashcards</h2>
+            <p>Load a question set, then learn one card at a time.</p>
+          </div>
+        </div>
+
+        <section class="deck-panel" aria-label="Flashcard study area">
+          <div class="deck-toolbar">
+            <div class="deck-title-wrap">
+              <span class="deck-kicker">CURRENT DECK</span>
+              <strong id="deck-name">No deck loaded</strong>
+            </div>
+            <div class="deck-actions">
+              <button id="clear-button" class="clear-button" type="button" hidden>Clear deck</button>
+              <label class="upload-button" for="json-file">
+                <span aria-hidden="true">＋</span> Add question set
+              </label>
+            </div>
+            <input id="json-file" type="file" accept=".json,application/json" />
+          </div>
+
+          <div id="drop-zone" class="study-area">
+            <div id="empty-state" class="empty-state">
+              <div class="empty-art" aria-hidden="true">
+                <span class="paper paper-back"></span><span class="paper paper-front">?</span>
+              </div>
+              <h3>Your next study session starts here.</h3>
+              <p>Choose a JSON question set to turn it into a deck of flashcards.</p>
+              <label class="primary-button" for="json-file">Choose a JSON file</label>
+              <span class="drop-hint">or drag and drop it here</span>
+            </div>
+
+            <div id="study-view" class="study-view" hidden>
+              <div class="progress-row">
+                <span id="card-position">CARD 1 OF 1</span>
+                <span class="progress-track"><span id="progress-fill"></span></span>
+                <span id="progress-percent">0%</span>
+              </div>
+              <button id="flashcard" class="flashcard" type="button" aria-label="Show answer">
+                <span class="card-topline"><span id="side-label">QUESTION</span><span id="card-number">01</span></span>
+                <span id="card-content" class="card-content"></span>
+                <span id="flip-hint" class="flip-hint"><span aria-hidden="true">↻</span> Click to reveal answer</span>
+              </button>
+              <div class="card-controls">
+                <button id="previous-button" class="nav-button" type="button" aria-label="Previous card">← <span>Previous</span></button>
+                <button id="flip-button" class="flip-button" type="button">Show answer <span aria-hidden="true">↗</span></button>
+                <button id="next-button" class="nav-button" type="button" aria-label="Next card"><span>Next</span> →</button>
+              </div>
+              <p class="keyboard-hint">Use <kbd>←</kbd> <kbd>→</kbd> to move <span>·</span> <kbd>Space</kbd> to flip</p>
+            </div>
+          </div>
+          <div id="status-message" class="status-message" role="status" aria-live="polite"></div>
+        </section>
+
+        <details class="format-help">
+          <summary>What should my JSON look like?</summary>
+          <p>Use an array of cards with a <code>question</code> and <code>answer</code> for each one:</p>
+          <pre><code>[
+  { "question": "What is ...?", "answer": "It is ..." },
+  { "question": "Why does ...?", "answer": "Because ..." }
+]</code></pre>
+        </details>
+        <p class="privacy-note"><span aria-hidden="true">◉</span> Your cards stay on this device. Files are read locally and never uploaded.</p>
+      </section>
+      <footer>Made for curious minds <span>✳</span></footer>
+    </main>
+    <script src="app.js" defer></script>
+  </body>
+</html>
