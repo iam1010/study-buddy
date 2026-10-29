@@ -30,6 +30,8 @@ Or a named deck object:
 
 Each card needs non-empty `question` and `answer` strings. `examples/sample-questions.json` is included as a starter deck.
 
+Cards are shuffled each time a question set is loaded.
+
 Click the card or **Show answer** to flip it. Use **Previous** and **Next**, or the left and right arrow keys to move between cards. Press Space to flip.
 
 Question sets are read in your browser and are not uploaded.

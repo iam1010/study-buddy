@@ -36,6 +36,15 @@
     });
   }
 
+  function shuffleCards(deck) {
+    // Fisher–Yates gives every ordering an equal chance.
+    for (let index = deck.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [deck[index], deck[randomIndex]] = [deck[randomIndex], deck[index]];
+    }
+    return deck;
+  }
+
   function render() {
     const current = cards[currentIndex];
     const count = cards.length;
@@ -74,7 +83,7 @@
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      const nextCards = parseCards(data);
+      const nextCards = shuffleCards(parseCards(data));
       cards = nextCards;
       currentIndex = 0;
       showingAnswer = false;
