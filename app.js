@@ -77,6 +77,14 @@
     render();
   }
 
+  function restartDeck() {
+    if (!cards.length) return;
+    shuffleCards(cards);
+    currentIndex = 0;
+    showingAnswer = false;
+    render();
+  }
+
   async function loadFile(file) {
     if (!file) return;
     status.textContent = '';
@@ -119,6 +127,7 @@
     if (event.target instanceof HTMLElement && (event.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(event.target.tagName))) return;
     if (event.key === 'ArrowLeft') move(-1);
     if (event.key === 'ArrowRight') move(1);
+    if (event.key.toLowerCase() === 'r') restartDeck();
     if (event.code === 'Space') { event.preventDefault(); flip(); }
   });
 
